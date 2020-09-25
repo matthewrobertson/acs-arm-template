@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "resourceName": {
+          "type": "string",
+          "defaultValue": "[concat('dynamicsSample', uniqueString(resourceGroup().id))]",
+          "metadata": {
+              "description": "Provide a unique name for the resource."
+          }
+      },
+      "eventSubName": {
+        "type": "string",
+        "defaultValue": "smsEvents",
+        "metadata": {
+            "description": "Provide a name for the Event Grid subscription."
+        }
+      },
+      "endpoint": {
+        "type": "string",
+        "defaultValue": "https://egviewer74mxujkwpiwnu.azurewebsites.net/api/updates",
+        "metadata": {
+            "description": "Provide the URL for the WebHook to receive events."
+        }
+      },
+      "systemTopicName": {
+        "type": "String",
+        "defaultValue": "[concat('mySystemTopic', uniqueString(resourceGroup().id))]",
+        "metadata": {
+            "description": "Provide a name for the system topic."
+        }
+      }
+  },
+  "resources": [
+      {
+        "type": "Microsoft.Communication/CommunicationServices",
+        "apiVersion": "2020-08-20-preview",
+        "name": "[parameters('resourceName')]",
+        "location": "global",
+        "tags": {},
+        "properties": {
+          "dataLocation": "United States"
+        }
+      },
+      {
+        "name": "[parameters('systemTopicName')]",
+        "type": "Microsoft.EventGrid/systemTopics",
+        "apiVersion": "2020-04-01-preview",
+        "location": "global",
+        "dependsOn": [
+            "[parameters('resourceName')]"
+        ],
+        "properties": {
+            "source": "[resourceId('Microsoft.Communication/CommunicationServices', parameters('resourceName'))]",
+            "topicType": "Microsoft.Communication.CommunicationServices"
+        }
+      },
+      {
+        "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+        "apiVersion": "2020-04-01-preview",
+        "name": "[concat(parameters('systemTopicName'), '/', parameters('eventSubName'))]",
+        "dependsOn": [
+            "[resourceId('Microsoft.EventGrid/systemTopics', parameters('systemTopicName'))]"
+        ],
+        "properties": {
+            "destination": {
+                "properties": {
+                    "endpointUrl": "[parameters('endpoint')]"
+                },
+                "endpointType": "WebHook"
+            },
+            "filter": {
+                "includedEventTypes": [
+                    "Microsoft.Communication.SMSReceived",
+                    "Microsoft.Communication.SMSDeliveryReportReceived"
+                ]
+            }
+        }
+    }
+  ]
+}
+
