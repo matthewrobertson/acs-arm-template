@@ -38,6 +38,10 @@ az deployment group create \
 - The `parameters` section configures the form fields that are presented for the user to customize the resources that will be deployed.
 - The `resources` section contains the templates for creating the Communication Services resource, Event Grid system topic, and Event Grid subscription.
 - The `output` section demonstrates use of a function to list the access key of the Communication Services Resource.
+- The link to deploy the template is created by concatenating the URL encoding the raw template URL and appending it to https://portal.azure.com/#create/Microsoft.Template/uri/
+```
+https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmatthewrobertson%2Facs-arm-template%2Fmaster%2Ftemplate.json
+```
 
 ## Resources
 
