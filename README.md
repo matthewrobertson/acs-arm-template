@@ -34,13 +34,10 @@ az deployment group create \
 
 ## Implementation Details
 
-The entire ARM template is contained in the [template.json](https://github.com/matthewrobertson/acs-arm-template/blob/master/template.json) file. 
-
-The `parameters` section configures the form fields that are presented for the user to customize the resources that will be deployed.
-
-The `resources` section contains the templates for creating the Communication Services resource, Event Grid system topic, and Event Grid subscription.
-
-The `output` section demonstrates use of a function to list the access key of the Communication Services Resource.
+- The entire ARM template is contained in the [template.json](https://github.com/matthewrobertson/acs-arm-template/blob/master/template.json) file. 
+- The `parameters` section configures the form fields that are presented for the user to customize the resources that will be deployed.
+- The `resources` section contains the templates for creating the Communication Services resource, Event Grid system topic, and Event Grid subscription.
+- The `output` section demonstrates use of a function to list the access key of the Communication Services Resource.
 
 ## Resources
 
