@@ -11,16 +11,26 @@ This repository demonstrates use of an ARM template to:
 
 It is trival to construct a link the enables anyone to deploy this template in their own Azure Subscription. To see this in action click the following button:
 
-
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmatthewrobertson%2Facs-arm-template%2Fmaster%2Ftemplate.json">![Foo](https://docs.microsoft.com/en-us/azure/media/template-deployments/deploy-to-azure.svg)</a>
 
 After logging into the Azure portal, you will be taken to a single step deployment editor, that allows you to select a resource group and set a few of the resource attributes. The fields, labels and descriptions can all be customized in the ARM template.
 
-*Screenshot*
+![deployment editor](./screenshots/deployment_editor.png =400x)
 
 Once the deployment completes, you can open the **Outputs** tab to view the access key that can be used to connect to the Communication Services data plane (i.e. provision phone numbers).
 
-*Screenshot*
+![Access key output](./screenshots/deployment_editor.png =400x)
+
+It is also possible to deploy the template via the Azure CLI. The following example creates a resource group, and deploys a template from your local machine:
+
+```bash
+az group create --name ExampleGroup --location "West US"
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file template.json \
+  --parameters systemTopicName=overriddentopicname
+```
 
 ## Implementation Details
 
@@ -31,6 +41,8 @@ The `parameters` section configures the form fields that are presented for the u
 The `resources` section contains the templates for creating the Communication Services resource, Event Grid system topic, and Event Grid subscription.
 
 The `output` section demonstrates use of a function to list the access key of the Communication Services Resource.
+
+
 
 ## Resources
 
