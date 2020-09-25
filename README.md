@@ -15,11 +15,11 @@ It is trival to construct a link the enables anyone to deploy this template in t
 
 After logging into the Azure portal, you will be taken to a single step deployment editor, that allows you to select a resource group and set a few of the resource attributes. The fields, labels and descriptions can all be customized in the ARM template.
 
-![deployment editor](./screenshots/deployment_editor.png =400x)
+<img src="./screenshots/deployment_editor.png" width="600">
 
 Once the deployment completes, you can open the **Outputs** tab to view the access key that can be used to connect to the Communication Services data plane (i.e. provision phone numbers).
 
-![Access key output](./screenshots/deployment_editor.png =400x)
+<img src="./screenshots/access_key.png" width="600">
 
 It is also possible to deploy the template via the Azure CLI. The following example creates a resource group, and deploys a template from your local machine:
 
