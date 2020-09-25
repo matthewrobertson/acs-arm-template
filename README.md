@@ -42,8 +42,6 @@ The `resources` section contains the templates for creating the Communication Se
 
 The `output` section demonstrates use of a function to list the access key of the Communication Services Resource.
 
-
-
 ## Resources
 
 - [How to guide: Create system topics with ARM templates](https://docs.microsoft.com/en-us/azure/event-grid/create-view-manage-system-topics-arm)
