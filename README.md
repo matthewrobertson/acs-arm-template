@@ -14,10 +14,6 @@ It is trival to construct a link the enables anyone to deploy this template in t
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmatthewrobertson%2Facs-arm-template%2Fmaster%2Ftemplate.json">![Foo](https://docs.microsoft.com/en-us/azure/media/template-deployments/deploy-to-azure.svg)</a>
 
-![Foo](https://docs.microsoft.com/en-us/azure/media/template-deployments/deploy-to-azure.svg)
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmatthewrobertson%2Facs-arm-template%2Fmaster%2Ftemplate.json">why you no work?</a>
-
 After logging into the Azure portal, you will be taken to a single step deployment editor, that allows you to select a resource group and set a few of the resource attributes. The fields, labels and descriptions can all be customized in the ARM template.
 
 *Screenshot*
