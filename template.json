@@ -77,6 +77,12 @@
             }
         }
     }
-  ]
+  ],
+  "outputs": {
+    "access key": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.Communication/CommunicationServices', parameters('resourceName')), '2020-08-20-preview').primaryKey]"
+    }
+	}
 }
 
